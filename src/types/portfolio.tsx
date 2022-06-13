@@ -2,7 +2,6 @@ export type PortfolioItemType = {
 	type: string
 	title: string
 	image: string
-	github: string
 	link: string
 	active: boolean
 	stack: JSON

@@ -1,0 +1,47 @@
+/* blue: #314ee2
+green: #2ecc71 */
+
+.bg-primary {
+	/* background-color: hsla(0, 0%, 0%, 0.85); */
+
+	background-image: repeating-linear-gradient(
+			45deg,
+			rgba(141, 130, 130, 0.1) 0px,
+			rgba(97, 97, 97, 0.1) 2px,
+			transparent 2px,
+			transparent 4px
+		),
+		linear-gradient(
+			to right,
+			rgba(36, 35, 35, 0.95) 0%,
+			hsla(0, 0%, 0%, 0.95) 100%
+		);
+
+	/* background-color: #263238; */
+}
+
+.bg-secondary {
+	background-color: #1f1f20;
+}
+
+.bg-banner {
+	background-image: repeating-linear-gradient(
+			45deg,
+			rgba(141, 130, 130, 0.1) 0px,
+			rgba(97, 97, 97, 0.1) 2px,
+			transparent 2px,
+			transparent 4px
+		),
+		linear-gradient(
+			to right,
+			rgba(36, 35, 35, 0.95) 0%,
+			hsla(0, 0%, 0%, 0.95) 100%
+		),
+		url('/gg.png');
+
+	background-repeat: no-repeat;
+	object-fit: cover;
+	background-position: center;
+	background-size: cover;
+	background-blend-mode: normal;
+}

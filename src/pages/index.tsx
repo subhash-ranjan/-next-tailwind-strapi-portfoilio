@@ -20,9 +20,9 @@ const Home = ({
     return (
         <div className="h-full">
             <Banner />
-            <Services data={service_data} />
-            <Portfolio data={portfolio_data} />
-            <Articles data={articles_data} />
+            <Services data={service_data.data} />
+            <Portfolio data={portfolio_data.data} />
+            <Articles data={articles_data.data} />
             <Contact />
         </div>
     );

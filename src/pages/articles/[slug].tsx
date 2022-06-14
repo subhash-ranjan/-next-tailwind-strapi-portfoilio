@@ -2,17 +2,12 @@ import React, { useEffect } from 'react';
 import gql from 'graphql-tag';
 import { FETCH_ARTICLES } from '../../queries/articles';
 import { useQuery } from '@apollo/client';
-import { ArticleType, ArticleItemType } from '../../types/atricle';
+import { ArticleType } from '../../types';
 import { myConfig } from '../../lib/config';
 
 const url = `${myConfig.API_URL}/api/articles`;
 
-const AtricleDetail = ({
-    image,
-    title,
-    published,
-    content,
-}: ArticleItemType) => {
+const AtricleDetail = ({ image, title, published, content }: any) => {
     useEffect(() => {}, []);
 
     return (

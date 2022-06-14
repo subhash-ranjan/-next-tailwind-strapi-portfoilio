@@ -7,7 +7,7 @@ import {
     CloudIcon,
 } from '@heroicons/react/outline';
 import Text from '../Text';
-import { ServiceListType } from '../../../types/services';
+import { ServiceType } from '../../../types';
 import { getInclusionDirectives } from '@apollo/client/utilities';
 
 type OnlyBoolsAndHorses = {
@@ -16,7 +16,7 @@ type OnlyBoolsAndHorses = {
 
 type ReactNode = React.ReactNode;
 
-const index = ({ services }: ServiceListType) => {
+const index = ({ services }: { services: ServiceType[] }) => {
     const getIcons = (index: Number): React.ReactNode => {
         switch (index) {
             case 0:

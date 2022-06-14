@@ -5,26 +5,26 @@ import FlexListPortfolio from '../UI/FlexListPortfolio';
 import { ArrowDownIcon } from '@heroicons/react/solid';
 import { useQuery } from '@apollo/client';
 import { FETCH_PORTFOLIOS } from '../../queries/portfolio';
-import { PortfolioEntityType, PortfoliosType } from '../../types/portfolio';
+import { PortfolioType } from '../../types';
 import PageHeader from '../UI/PageHeader';
 
 let ptype = 'web',
     lstWeb,
     lstMobile;
-const Index = ({ data }: { data: any }) => {
+const Index = ({ data }: { data: PortfolioType[] }) => {
     let dvWeb = React.useRef<HTMLDivElement>(null);
     let dvMobile = React.useRef<HTMLDivElement>(null);
     let spanWeb = React.useRef<HTMLDivElement>(null);
     let spanMobile = React.useRef<HTMLDivElement>(null);
 
-    lstWeb = data.data?.filter((x: any) => {
+    lstWeb = data?.filter((x: any) => {
         if (x.attributes.type.toString().toUpperCase() == 'WEB')
-            return x as PortfolioEntityType;
+            return x as PortfolioType;
     });
 
-    lstMobile = data.data?.filter((x: any) => {
+    lstMobile = data?.filter((x: any) => {
         if (x.attributes.type.toString().toUpperCase() == 'MOBILE')
-            return x as PortfolioEntityType;
+            return x as PortfolioType;
     });
 
     const handleTypeChange = (type: string) => {

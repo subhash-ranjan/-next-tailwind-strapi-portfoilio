@@ -1,12 +1,12 @@
 import React from 'react';
 import { CodeIcon, LinkIcon, LockClosedIcon } from '@heroicons/react/solid';
-import { PortfoliosType, PortfolioEntityType } from '../../../types/portfolio';
+import { PortfolioType } from '../../../types';
 import PortfolioPic from '/public/portfolio/vimerse.png';
 import GithubIcon from '/public/vercel.svg';
 import Image from 'next/image';
 import Button from '../Button';
 
-const index = ({ portfolios }: PortfoliosType) => {
+const index = ({ portfolios }: { portfolios: PortfolioType[] }) => {
     return (
         <div
             className="

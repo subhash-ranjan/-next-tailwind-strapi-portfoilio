@@ -6,8 +6,9 @@ import { ArrowDownIcon } from '@heroicons/react/solid';
 import { useQuery } from '@apollo/client';
 import { FETCH_ARTICLES } from '../../queries/articles';
 import PageHeader from '../UI/PageHeader';
+import { ArticleType } from '../../types';
 
-const Index = ({ data }: { data: any }) => {
+const Index = ({ data }: { data: ArticleType[] }) => {
     return (
         <div
             id="dv-article"
@@ -31,8 +32,8 @@ const Index = ({ data }: { data: any }) => {
                             </span>
                         </div>
                     )} */}
-                    {!!data && data.data?.length > 0 && (
-                        <FlexListArticles articles={data.data} />
+                    {!!data && data?.length > 0 && (
+                        <FlexListArticles articles={data} />
                     )}
                 </div>
             </div>

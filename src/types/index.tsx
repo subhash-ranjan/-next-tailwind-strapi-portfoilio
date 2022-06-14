@@ -34,3 +34,35 @@ export type PageHeaderType = {
     styleheader?: string;
     styleSubheader?: string;
 };
+
+export type ArticleType = {
+    id: number;
+    attributes: {
+        title: string;
+        image: string;
+        published: string;
+        content: string;
+        slug: string;
+    };
+};
+
+export type PortfolioType = {
+    id: number;
+    attributes: {
+        type: string;
+        title: string;
+        image: string;
+        github: string;
+        link: string;
+        active: boolean;
+        stack: JSON;
+        description: string;
+    };
+};
+
+export type ServiceType = {
+    attributes: {
+        name: string;
+        skills: JSON;
+    };
+};

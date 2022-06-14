@@ -1,11 +1,11 @@
 import React from 'react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
-import { ArticleListType } from '../../../types/atricle';
+import { ArticleType } from '../../../types';
 import Image from 'next/image';
 import PortfolioPic from '/public/portfolio/vimerse.png';
 import GithubIcon from '/public/vercel.svg';
 
-const index = ({ articles }: ArticleListType) => {
+const index = ({ articles }: { articles: ArticleType[] }) => {
     return (
         <div
             className={`

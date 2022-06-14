@@ -6,8 +6,9 @@ import { ArrowDownIcon } from '@heroicons/react/solid';
 import PageHeader from '../UI/PageHeader';
 import { useQuery } from '@apollo/client';
 import { FETCH_SERVICES } from '../../queries/services';
+import { ServiceType } from '../../types';
 
-const Index = ({ data }: { data: any }) => {
+const Index = ({ data }: { data: ServiceType[] }) => {
     return (
         <div
             id="dv-service"
@@ -40,8 +41,8 @@ const Index = ({ data }: { data: any }) => {
                     </div>
                 )} */}
 
-                {data && data.data?.length > 0 && (
-                    <FlexListService services={data.data} />
+                {data && data?.length > 0 && (
+                    <FlexListService services={data} />
                 )}
             </div>
         </div>

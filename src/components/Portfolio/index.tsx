@@ -1,30 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import Button from '../UI/Button';
-import Text from '../UI/Text';
 import FlexListPortfolio from '../UI/FlexListPortfolio';
-import { ArrowDownIcon } from '@heroicons/react/solid';
-import { useQuery } from '@apollo/client';
-import { FETCH_PORTFOLIOS } from '../../queries/portfolio';
 import { PortfolioType } from '../../types';
 import PageHeader from '../UI/PageHeader';
 
-let ptype = 'web',
-    lstWeb,
-    lstMobile;
+let ptype = 'web';
 const Index = ({ data }: { data: PortfolioType[] }) => {
     let dvWeb = React.useRef<HTMLDivElement>(null);
     let dvMobile = React.useRef<HTMLDivElement>(null);
     let spanWeb = React.useRef<HTMLDivElement>(null);
     let spanMobile = React.useRef<HTMLDivElement>(null);
 
-    lstWeb = data?.filter((x: any) => {
+    let lstWeb = data?.filter((x: any) => {
         if (x.attributes.type.toString().toUpperCase() == 'WEB')
             return x as PortfolioType;
     });
 
-    lstMobile = data?.filter((x: any) => {
+    const lstMobile = data?.filter((x: any) => {
         if (x.attributes.type.toString().toUpperCase() == 'MOBILE')
             return x as PortfolioType;
+    });
+
+    lstMobile?.map((x: any) => {
+        lstWeb.push(x);
     });
 
     const handleTypeChange = (type: string) => {
@@ -68,57 +65,35 @@ const Index = ({ data }: { data: PortfolioType[] }) => {
     return (
         <div
             id="dv-portfolio"
-            className={`${Style.pageContainer} bg-primary bg-opacity-20 flex-col-start-center min-h-[120vh] lg:py-34 h-full transition duration-1000 ease-in-out`}
+            className={`${Style.pageContainer} bg-zinc-900 flex-col-start-center min-h-[120vh] h-full transition duration-1000 ease-in-out`}
         >
             <PageHeader
                 header="Portfolio"
                 styleheader="text-white"
                 styleSubheader="text-gray-300"
-                subHeader="My selected works"
+                subHeader="Selected Works"
             />
 
-            <div className="mb-10 flex h-full w-full flex-row items-center justify-center">
-                <span
-                    className={`mx-3 h-full cursor-pointer p-2 font-bold uppercase text-gray-400`}
-                    onClick={() => {
-                        handleTypeChange('web');
-                    }}
-                    ref={spanWeb}
-                >
-                    web
-                </span>
-
-                <span
-                    className={`mx-3 cursor-pointer p-2 font-bold uppercase text-gray-400`}
-                    onClick={() => {
-                        handleTypeChange('mobile');
-                    }}
-                    ref={spanMobile}
-                >
-                    mobile
-                </span>
-            </div>
-
             <div
-                className={`flex h-full w-full flex-col items-start justify-evenly lg:flex-row    `}
+                className={`flex h-full w-full flex-col items-start justify-evenly lg:flex-row`}
                 ref={dvWeb}
             >
                 <FlexListPortfolio portfolios={lstWeb} />
             </div>
 
-            <div
+            {/* <div
                 className={`h-full w-full flex-col items-start justify-evenly lg:flex-row
                 hidden`}
                 ref={dvMobile}
             >
                 <FlexListPortfolio portfolios={lstMobile} />
-            </div>
+            </div> */}
         </div>
     );
 };
 
 const Style = {
-    pageContainer: `px-5 md:px-10 lg:px-20 py-20  md:py-32 lg:py-32`,
+    pageContainer: `px-5 md:px-10 lg:px-20 py-20  md:py-32 lg:py-24`,
 };
 
 export default Index;

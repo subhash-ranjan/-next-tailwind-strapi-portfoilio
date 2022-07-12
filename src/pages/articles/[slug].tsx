@@ -11,7 +11,7 @@ const AtricleDetail = ({ image, title, published, content }: any) => {
     useEffect(() => {}, []);
 
     return (
-        <div className=" bg-primary flex-col-start-center lg:py-34 flex min-h-[100vh] w-full px-5 py-32 md:px-20 lg:px-20 ">
+        <div className=" bg-zinc-900 flex-col-start-center lg:py-34 flex min-h-[100vh] w-full px-5 py-32 md:px-20 lg:px-52 ">
             <span className="text-bold mb-1 text-3xl text-gray-200">
                 {title}
             </span>
@@ -19,7 +19,10 @@ const AtricleDetail = ({ image, title, published, content }: any) => {
                 {published}
             </span>
 
-            <img src={`/article/${image}.jpeg`} className="w-full" />
+            <img
+                src={`/article/${image}.jpeg`}
+                className="w-full h-[300px] lg:h-[400px]"
+            />
 
             <p className="py-20 px-5 text-lg text-gray-100 ">{content}</p>
         </div>
@@ -29,7 +32,7 @@ const AtricleDetail = ({ image, title, published, content }: any) => {
 export default AtricleDetail;
 
 export const getStaticPaths = async () => {
-    const resp = await fetch(url).then((res) => res.json());
+    const resp = await fetch(url).then(res => res.json());
 
     const pths = resp?.data?.map((item: ArticleType) => {
         return {
@@ -45,7 +48,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
     const uri = `${url}?filters\[slug\][$eq]=${context.params.slug}`;
-    const resp = await fetch(uri).then((res) => res.json());
+    const resp = await fetch(uri).then(res => res.json());
     const info = resp.data[0].attributes;
     return {
         props: {

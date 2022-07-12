@@ -4,6 +4,7 @@ import Services from '../components/Services';
 import Portfolio from '../components/Portfolio';
 import Contact from '../components/Contact';
 import Articles from '../components/Articles';
+import About from '../components/About';
 import { myConfig } from '../lib/config';
 
 const Home = ({
@@ -20,6 +21,7 @@ const Home = ({
     return (
         <div className="h-full">
             <Banner />
+            <About data={service_data.data} />
             <Services data={service_data.data} />
             <Portfolio data={portfolio_data.data} />
             <Articles data={articles_data.data} />

@@ -2,13 +2,14 @@ import React, { useRef, useState } from 'react';
 import FlexListService from '../UI/FlexListService';
 import { CheckCircleIcon, MailIcon } from '@heroicons/react/solid';
 import { useForm } from 'react-hook-form';
+import IconButton from '../UI/IconButton ';
 import Button from '../UI/Button';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Image from 'next/image';
-import GithubIcon from '/public/vercel.svg';
 import PageHeader from '../UI/PageHeader';
 import { myConfig } from '../../lib/config';
+import { GithubIcon } from '../../svgs';
 
 type FormType = {
     name: string;
@@ -70,7 +71,7 @@ const Index = () => {
     return (
         <div
             id="dv-contact"
-            className={`${Style.pageContainer} lg:py-34 bg-primary h-full min-h-[100vh] `}
+            className={`${Style.pageContainer} bg-zinc-900 h-full min-h-[100vh] `}
         >
             <PageHeader
                 header="Contact"
@@ -80,6 +81,51 @@ const Index = () => {
             />
 
             <div className={Style.contactBox}>
+                <div
+                    className={`${Style.textBox} mb-8 flex flex-col items-center justify-center align-middle md:mb-14 lg:m-0`}
+                >
+                    <span
+                        className={`text-white text-xl  pb-1 mb-5 font-bold sm:text-center`}
+                    >
+                        I’d Love to Hear From You!
+                    </span>
+
+                    <p
+                        className={`font-base text-center text-gray-300 sm:text-center md:w-[70%]`}
+                    >
+                        I am just one click away to help you take your project
+                        or product from great to incredible. Write to me to
+                        share more details about your project.
+                    </p>
+                </div>
+                <div className={`${Style.formBox}`}>
+                    <Button
+                        text="send email"
+                        isDark={false}
+                        style="mb-3 w-52"
+                        iconPosition="left"
+                        isTragetBlank={true}
+                        href={`mailto:${myConfig.MAILTO_URL}`}
+                        icon={
+                            <MailIcon className="h-5 w-5 fill-zinc-900 mr-2" />
+                        }
+                    />
+                    <Button
+                        text="Visit Github"
+                        isDark={false}
+                        style=" w-52"
+                        iconPosition="left"
+                        isTragetBlank={true}
+                        href={`${myConfig.GITHUB_URL}`}
+                        icon={
+                            <GithubIcon
+                                className="h-5 w-5 fill-zinc-900 mr-2"
+                                viewbox="0 0 16 16"
+                            />
+                        }
+                    />
+                </div>
+
                 {/* <div className={Style.formBox}>
 
                     {
@@ -127,82 +173,13 @@ const Index = () => {
                         </form>
                     }
                 </div> */}
-
-                <div
-                    className={`${Style.textBox} mb-8 flex flex-col items-center justify-center align-middle md:mb-14 lg:m-0`}
-                >
-                    <span
-                        className={`text-white text-xl  pb-1 mb-5 font-bold sm:text-center`}
-                    >
-                        I’d Love to Hear From You!
-                    </span>
-
-                    <p
-                        className={`font-base text-center text-gray-300 sm:text-center md:w-[70%]`}
-                    >
-                        I am just one click away to help you take your project
-                        or product from great to incredible. Write to me to
-                        share more details about your project.
-                    </p>
-                </div>
-                <div className={`${Style.formBox}`}>
-                    <div className={`flex-row-center-center lg:mb-2`}>
-                        <a
-                            href={`mailto:${myConfig.MAILTO_URL}`}
-                            className={`flex-row-center-center w-full py-5 text-gray-300`}
-                        >
-                            <Button
-                                text="Send Email"
-                                style={'w-60 py-3 h-12 bg-black bg-opacity-20'}
-                                showArrow={false}
-                                isCapital={false}
-                                isGithub={false}
-                                isText={true}
-                                styleText="ml-3 text-base font-normal"
-                                icon={
-                                    <MailIcon className="h-5 w-5 fill-gray-200" />
-                                }
-                            />
-                        </a>
-                    </div>
-
-                    <div className={` flex-row-center-center`}>
-                        <a
-                            target="_blank"
-                            rel="noreferrer"
-                            href={`${myConfig.GITHUB_URL}`}
-                            className={`flex-row-center-center w-full py-5 text-gray-300`}
-                        >
-                            <Button
-                                text="Visit Github"
-                                style={'w-60 py-3 h-12 bg-black bg-opacity-20'}
-                                showArrow={false}
-                                isCapital={false}
-                                isGithub={false}
-                                isText={true}
-                                styleText="ml-3 text-base font-normal"
-                                icon={
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="18"
-                                        height="18"
-                                        fill="white"
-                                        viewBox="0 0 16 16"
-                                    >
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                    </svg>
-                                }
-                            />
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     );
 };
 
 const Style = {
-    pageContainer: `px-5 md:px-10 lg:px-20 py-20 md:py-32 lg:py-32`,
+    pageContainer: `px-5 md:px-10 lg:px-20 py-20 md:py-32 lg:py-24`,
     contactBox: ` min-h-full flex flex-col lg:flex-row items-center justify-center p-5`,
     formBox:
         'w-full h-full min-h-80 flex flex-col items-center justify-center lg:border-l-[1px] border-zinc-700',

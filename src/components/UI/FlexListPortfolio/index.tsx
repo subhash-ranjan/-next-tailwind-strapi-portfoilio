@@ -4,20 +4,12 @@ import { PortfolioType } from '../../../types';
 import PortfolioPic from '/public/portfolio/vimerse.png';
 import GithubIcon from '/public/vercel.svg';
 import Image from 'next/image';
+import IconLink from '../IconLink';
 import Button from '../Button';
 
 const index = ({ portfolios }: { portfolios: PortfolioType[] }) => {
     return (
-        <div
-            className="
-            grid
-            w-full
-            gap-6
-            sm:grid-cols-1
-            md:grid-cols-1
-            lg:grid-cols-3
-        "
-        >
+        <div className="w-full gap-4 grid sm:grid-cols-1 md:grid-cols-2 lg:flex justify-center flex-wrap">
             {
                 //.slice(0, 3)
                 Array.from(portfolios)?.map((item, index) => {
@@ -26,43 +18,42 @@ const index = ({ portfolios }: { portfolios: PortfolioType[] }) => {
                     return (
                         <div
                             key={index}
-                            className={`flex-col-start-center
-                           ${index == 1 ? 'box-blue' : 'box-yellow'} 
+                            className={`size-full 
+                            flex-col-start-center   
+                            lg:max-w-[280px]                          
                             group transform transition duration-500 
-                            my-3 p-8`}
+                            `}
                         >
-                            <div className={`size-full flex-col-start-center `}>
-                                <Image
-                                    src={`/portfolio/${attributes.image}.png`}
-                                    alt="portfolio"
-                                    height={350}
-                                    width={450}
-                                    blurDataURL={`/_next/image?url=${attributes.image}&w=16&q=1`}
-                                    placeholder="blur" // Optional blur-up while loading
-                                    className="backdrop-blur-xl opacity-80"
-                                />
+                            <div
+                                className={`flex-col-start-center  rounded-sm !p-0 !m-0 `}
+                            >
+                                <div className="relative w-full md:w-[320px] lg:w-[280px] h-[180px] lg:h-[160px] !p-0 !m-0 bg-zinc-600">
+                                    <Image
+                                        src={`/portfolio/${attributes.image}.png`}
+                                        alt="portfolio"
+                                        layout="fill"
+                                        blurDataURL={`/_next/image?url=${attributes.image}&w=16&q=1`}
+                                        placeholder="blur" // Optional blur-up while loading
+                                        className="backdrop-blur-xl opacity-60 object-cover"
+                                    />
+                                </div>
 
-                                <div className="w-full flex-col-between-start py-5">
-                                    <div className={`mb-2 `}>
-                                        <span
-                                            className={`text-white text-xl font-bold text-left uppercase`}
-                                        >
-                                            {attributes.title}
-                                        </span>
-                                    </div>
+                                <div className="w-full flex-col-between-start p-5 h-[150px] bg-zinc-800">
+                                    <span
+                                        className={`text-gray-100 text-xl font-semibold text-left uppercase mb-1`}
+                                    >
+                                        {attributes.title}
+                                    </span>
 
-                                    <div className="w-full">
-                                        <p
-                                            className={`text-left text-base text-white`}
-                                        >
-                                            {attributes.description.slice(
-                                                0,
-                                                80
-                                            )}
-                                        </p>
-                                    </div>
+                                    <p
+                                        className={`text-left text-sm text-gray-300 font-light break-words max-w-[250px] overflow-hidden mb-2`}
+                                    >
+                                        {attributes.description.slice(0, 60)}
+                                    </p>
 
-                                    <div className={`w-full mt-4 mb-1`}>
+                                    <div
+                                        className={`w-full flex justify-start break-words overflow-hidden`}
+                                    >
                                         {stacks.length > 0 &&
                                             JSON.parse(stacks).map(
                                                 (
@@ -73,7 +64,7 @@ const index = ({ portfolios }: { portfolios: PortfolioType[] }) => {
                                                     return (
                                                         <span
                                                             key={index}
-                                                            className={` text-left text-sm uppercase text-white border-[1px] border-gray-300 p-2 m-1`}
+                                                            className={` text-left mx-[3px] text-sm font-semibold uppercase text-gray-200`}
                                                         >
                                                             {item}
                                                         </span>
@@ -81,96 +72,47 @@ const index = ({ portfolios }: { portfolios: PortfolioType[] }) => {
                                                 }
                                             )}
                                     </div>
-
-                                    {/* <div
-                                    className={`size-full flex-col-start-center`}
-                                >
-
-                                    <div
-                                        className={`${Style.flexRowJustifyStart}`}
-                                    >
-                                        {attributes.github && (
-                                            <div
-                                                className={`mx-2 flex h-10 w-10 flex-col items-center justify-center rounded-full bg-zinc-800 bg-opacity-50`}
-                                            >
-                                                <svg
-                                                    className="h-6 w-6 fill-gray-300"
-                                                    viewBox="0 0 16 16"
-                                                >
-                                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-                                                </svg>
-                                            </div>
-                                        )}
-                                        {!attributes.github && (
-                                            <div
-                                                className={` mx-2 flex h-10 w-10 flex-col items-center justify-center rounded-full bg-zinc-800 bg-opacity-50`}
-                                            >
-                                                <LockClosedIcon className="mx-2 h-6 fill-gray-300" />
-                                            </div>
-                                        )}
-                                        <div
-                                            className={` mx-2 flex h-10 w-10 flex-col items-center justify-center rounded-full bg-zinc-800 bg-opacity-50`}
-                                        >
-                                            <LinkIcon className="ml-2 h-6 cursor-pointer fill-gray-300 pr-3" />
-                                        </div>
-                                    </div>
-                                </div> */}
                                 </div>
                             </div>
 
                             <div
-                                className={`size-full flex-row items-center justify-center  absolute top-0 hidden group-hover:flex 
-                               bg-gray-800
-                                 bg-opacity-80 
+                                className={`size-full flex-row items-center justify-center  
+                                hidden absolute top-0 
+                                group-hover:flex 
+                               bg-indigo-900 opacity-90 
                                  `}
                             >
                                 <div className={``}>
                                     {attributes.github && (
                                         <div className={` cursor-pointer mb-5`}>
-                                            <a
-                                                target="_blank"
-                                                rel="noreferrer"
+                                            <Button
+                                                text="View Code"
+                                                isDark={false}
+                                                style="mb-3 w-48"
+                                                iconPosition="left"
+                                                isTragetBlank={true}
                                                 href={attributes.github}
-                                            >
-                                                <Button
-                                                    text="Visit Website"
-                                                    style={
-                                                        'w-48 py-3 h-12 bg-black bg-opacity-20'
-                                                    }
-                                                    showArrow={false}
-                                                    isCapital={false}
-                                                    isGithub={true}
-                                                />
-                                            </a>
+                                                icon={
+                                                    <CodeIcon className="h-5 w-5 fill-zinc-900 mr-2" />
+                                                }
+                                            />
                                         </div>
                                     )}
-                                    {/* {!attributes.github && (
-                                        <div className={`${Style.iconBgBig}`}>
-                                            <LockClosedIcon className="mx-2 h-6 fill-gray-200" />
-                                        </div>
-                                    )} */}
-                                    <div className={``}>
-                                        <a
-                                            target="_blank"
-                                            rel="noreferrer"
-                                            href={attributes.link}
-                                        >
+                                    {attributes.link && (
+                                        <div className={``}>
                                             <Button
-                                                text="Visit Website"
-                                                style={
-                                                    'w-48 py-3 bg-black bg-opacity-20 h-12'
+                                                text="View Website"
+                                                isDark={false}
+                                                style="mb-3 w-48"
+                                                iconPosition="left"
+                                                isTragetBlank={true}
+                                                href={attributes.link}
+                                                icon={
+                                                    <LinkIcon className="h-5 w-5 fill-zinc-900 mr-2" />
                                                 }
-                                                showArrow={false}
-                                                isCapital={false}
-                                                isText={true}
-                                                styleText="text-sm font-normal"
                                             />
-                                            {/* <LinkIcon className="ml-2 h-6 cursor-pointer fill-gray-200 pr-3" />
-                                            <span className="  border-gradient-custom">
-                                                View Website
-                                            </span> */}
-                                        </a>
-                                    </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>

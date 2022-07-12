@@ -5,14 +5,10 @@ import {
     DeviceMobileIcon,
     ServerIcon,
     CloudIcon,
-} from '@heroicons/react/outline';
+} from '@heroicons/react/solid';
 import Text from '../Text';
-import { ServiceType } from '../../../types';
+import { ServiceType, OnlyBoolsAndHorses } from '../../../types';
 import { getInclusionDirectives } from '@apollo/client/utilities';
-
-type OnlyBoolsAndHorses = {
-    [key: string]: Number;
-};
 
 type ReactNode = React.ReactNode;
 
@@ -21,30 +17,22 @@ const index = ({ services }: { services: ServiceType[] }) => {
         switch (index) {
             case 0:
                 return (
-                    <CodeIcon
-                        className={`h-10 w-10 mb-3 p-[2px] text-blue-custom border-2 border-blue-custom  font-normal`}
-                    />
+                    <CodeIcon className="h-9 w-9 fill-white bg-indigo-600 !p-[2px] md:p-3 rounded-md mb-5" />
                 );
                 break;
             case 1:
                 return (
-                    <DeviceMobileIcon
-                        className={` h-10 w-10 mb-3 p-[2px] text-blue-custom border-2 border-blue-custom  font-normal`}
-                    />
+                    <DeviceMobileIcon className="h-9 w-9 fill-white bg-indigo-600 !p-[2px] md:p-3 rounded-md mb-5" />
                 );
                 break;
             case 2:
                 return (
-                    <ServerIcon
-                        className={`h-10 w-10 mb-3 p-[2px] text-blue-custom border-2 border-blue-custom  font-normal`}
-                    />
+                    <CloudIcon className="h-9 w-9 fill-white bg-indigo-600 !p-[2px] md:p-3 rounded-md mb-5" />
                 );
                 break;
             case 3:
                 return (
-                    <CloudIcon
-                        className={`h-10 w-10 mb-3 p-[2px] text-blue-custom border-2 border-blue-custom  font-normal`}
-                    />
+                    <ServerIcon className="h-9 w-9 fill-white bg-indigo-600 !p-[2px] md:p-3 rounded-md mb-5" />
                 );
                 break;
             default:
@@ -55,7 +43,7 @@ const index = ({ services }: { services: ServiceType[] }) => {
     };
 
     return (
-        <div className=" grid w-full gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className=" grid w-full gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {Array.from(services)?.map((item, index) => {
                 const { attributes } = item;
                 const skills = JSON.parse(JSON.stringify(attributes.skills));
@@ -66,7 +54,7 @@ const index = ({ services }: { services: ServiceType[] }) => {
                         key={index}
                         className="
                                 transfor group 
-                                flex h-[20rem] w-full
+                                flex h-full md:h-[20rem] w-full
                                 flex-col items-center justify-center
                                 transition duration-500 hover:scale-105
                                 "
@@ -74,26 +62,32 @@ const index = ({ services }: { services: ServiceType[] }) => {
                         <div
                             className={`h-full w-full 
                                 flex-col-start-start 
-                                bg-gray-100 md:bg-gray-50
+                                bg-gray-100 
                                   bg-opacity-100
-                                  p-8`}
+                                  py-6 px-4`}
                         >
-                            <div className="h-20 mb-3 w-full flex-col-start-center">
+                            <div className="h-20 w-full  mb-3">
                                 {getIcons(index)}
-                                <span className="w-full text-center text-blue-custom text-lg-bold-custom uppercase">
+                                <h2 className="text-lg text-gray-900 uppercase font-semibold whitespace-nowrap">
                                     {attributes.name}
-                                </span>
+                                </h2>
                             </div>
-                            <span className="w-full text-center text-blue-custom text-small-bold-custom uppercase">
-                                Stacks & Frameworks
-                            </span>
+                            <h2 className="text-sm text-gray-800 uppercase font-medium">
+                                Stacks
+                            </h2>
                             <div className="mt-3 flex flex-wrap">
                                 {itms.map((item: OnlyBoolsAndHorses) => {
                                     for (const [key, value] of Object.entries(
                                         item
                                     )) {
                                         return (
-                                            <span className="text-sm h-8  m-[2px] p-1 text-center border-[1px] border-gray-300 capitalize text-dark-custom">
+                                            <span
+                                                key={key}
+                                                className="text-sm  m-[2px] px-[6px] py-[3px]
+                                                text-center border-[1px] 
+                                                border-indigo-400 capitalize text-indigo-600 bg-indigo-100 
+                                                bg-opacity-100 rounded-2xl"
+                                            >
                                                 {key}
                                             </span>
                                         );
@@ -101,46 +95,6 @@ const index = ({ services }: { services: ServiceType[] }) => {
                                 })}
                             </div>
                         </div>
-
-                        {/* <div
-                            className="hidden h-[100%] 
-                                w-[100%] flex-col items-center
-                                justify-center
-                                bg-red-500
-                                bg-opacity-50
-                                group-hover:flex
-                                "
-                        >
-                            <div className="mb-1 flex w-[70%] flex-row items-center justify-end">
-                                <span className="m-0 p-0 text-left text-base text-white">
-                                    Exp (Yrs)
-                                </span>
-                            </div>
-
-                            {itms.map((item: OnlyBoolsAndHorses) => {
-                                for (const [key, value] of Object.entries(
-                                    item
-                                )) {
-                                    return (
-                                        <div
-                                            key={index}
-                                            className="flex w-[70%] flex-row items-center justify-between"
-                                        >
-                                            <div className="flex flex-row items-center justify-center">
-                                                <ChevronRightIcon className="h-5 fill-white " />
-                                                <span className="m-0 p-0 text-left text-base text-white">
-                                                    {key}
-                                                </span>
-                                            </div>
-
-                                            <span className="text-base text-amber-500">
-                                                {value.toString()}
-                                            </span>
-                                        </div>
-                                    );
-                                }
-                            })}
-                        </div> */}
                     </div>
                 );
             })}

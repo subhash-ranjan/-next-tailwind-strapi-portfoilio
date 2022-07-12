@@ -2,46 +2,127 @@
 green: #2ecc71 */
 
 .bg-primary {
-	/* background-color: hsla(0, 0%, 0%, 0.85); */
+    /* background-color: hsla(0, 0%, 0%, 0.85); */
 
-	background-image: repeating-linear-gradient(
-			45deg,
-			rgba(141, 130, 130, 0.1) 0px,
-			rgba(97, 97, 97, 0.1) 2px,
-			transparent 2px,
-			transparent 4px
-		),
-		linear-gradient(
-			to right,
-			rgba(36, 35, 35, 0.95) 0%,
-			hsla(0, 0%, 0%, 0.95) 100%
-		);
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(141, 130, 130, 0.1) 0px,
+            rgba(97, 97, 97, 0.1) 2px,
+            transparent 2px,
+            transparent 4px
+        ),
+        linear-gradient(
+            to right,
+            rgba(36, 35, 35, 0.95) 0%,
+            hsla(0, 0%, 0%, 0.95) 100%
+        );
 
-	/* background-color: #263238; */
+    /* background-color: #263238; */
 }
 
 .bg-secondary {
-	background-color: #1f1f20;
+    background-color: #1f1f20;
 }
 
 .bg-banner {
-	background-image: repeating-linear-gradient(
-			45deg,
-			rgba(141, 130, 130, 0.1) 0px,
-			rgba(97, 97, 97, 0.1) 2px,
-			transparent 2px,
-			transparent 4px
-		),
-		linear-gradient(
-			to right,
-			rgba(36, 35, 35, 0.95) 0%,
-			hsla(0, 0%, 0%, 0.95) 100%
-		),
-		url('/gg.png');
+    /* background-image: repeating-linear-gradient(45deg, rgba(141, 130, 130, 0.1) 0px, rgba(97, 97, 97, 0.1) 2px, transparent 2px, transparent 4px),
+    linear-gradient(to left bottom, rgba(17, 9, 106, 0.8) 0%, rgba(51, 35, 123, 0.7) 40%, rgba(17, 9, 106, 0.8) 70%),
+    url('/back-1.webp'); */
+    /* background-image: repeating-linear-gradient(45deg, rgba(141, 130, 130, 0.1) 0px, rgba(97, 97, 97, 0.1) 2px, transparent 2px, transparent 4px),
+    linear-gradient(to left bottom, rgba(6, 83, 160, 0.8) 0%, rgba(0, 97, 129, 0.7) 40%, rgba(2, 69, 136, 0.9) 70%),
+    url('/back-1.webp'); */
+    /* background-image: repeating-linear-gradient(45deg, rgba(141, 130, 130, 0.1) 0px, rgba(97, 97, 97, 0.1) 2px, transparent 2px, transparent 4px),
+    linear-gradient(to left bottom, rgba(17, 21, 77, 0.7), rgba(38, 34, 81, 0.9) 70%),
+    url('/back-1.webp'); */
+    background-image: repeating-linear-gradient(
+            45deg,
+            rgba(141, 130, 130, 0.1) 0px,
+            rgba(97, 97, 97, 0.1) 2px,
+            transparent 2px,
+            transparent 4px
+        ),
+        linear-gradient(
+            to right,
+            rgba(36, 35, 35, 0.95) 0%,
+            hsla(0, 0%, 0%, 0.95) 100%
+        );
 
-	background-repeat: no-repeat;
-	object-fit: cover;
-	background-position: center;
-	background-size: cover;
-	background-blend-mode: normal;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: normal;
+
+    /* linear-gradient(to right, #434343 0%, black 100%); */
+}
+
+.background-radial-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(
+            650px circle at 0% 0%,
+            hsl(218, 41%, 35%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%
+        ),
+        radial-gradient(
+            1250px circle at 100% 100%,
+            hsl(218, 41%, 45%) 15%,
+            hsl(218, 41%, 30%) 35%,
+            hsl(218, 41%, 20%) 75%,
+            hsl(218, 41%, 19%) 80%,
+            transparent 100%
+        );
+}
+
+.bg-circle {
+    background-image: radial-gradient(
+            circle at 17% 77%,
+            rgba(17, 17, 17, 0.04) 0%,
+            rgba(17, 17, 17, 0.04) 50%,
+            rgba(197, 197, 197, 0.04) 50%,
+            rgba(197, 197, 197, 0.04) 100%
+        ),
+        radial-gradient(
+            circle at 26% 17%,
+            rgba(64, 64, 64, 0.04) 0%,
+            rgba(64, 64, 64, 0.04) 50%,
+            rgba(244, 244, 244, 0.04) 50%,
+            rgba(244, 244, 244, 0.04) 100%
+        ),
+        radial-gradient(
+            circle at 44% 60%,
+            rgba(177, 177, 177, 0.04) 0%,
+            rgba(177, 177, 177, 0.04) 50%,
+            rgba(187, 187, 187, 0.04) 50%,
+            rgba(187, 187, 187, 0.04) 100%
+        ),
+        linear-gradient(19deg, rgb(28, 117, 250), rgb(34, 2, 159));
+}
+
+.bg-new {
+    clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0 100%);
+    /* clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%); */
+    /* clip-path: polygon(
+        0% 0%,
+        0% 100%,
+        25% 100%,
+        25% 25%,
+        75% 25%,
+        75% 75%,
+        25% 75%,
+        25% 100%,
+        100% 100%,
+        100% 0%
+    ); */
+}
+
+.bg-new-1 {
+    /* background-repeat: no-repeat;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-blend-mode: normal; */
+    background-image: url('/banner.avif');
 }

@@ -4,6 +4,7 @@ import { ArticleType } from '../../../types';
 import Image from 'next/image';
 import PortfolioPic from '/public/portfolio/vimerse.png';
 import GithubIcon from '/public/vercel.svg';
+import IconLink from '../IconLink';
 
 const index = ({ articles }: { articles: ArticleType[] }) => {
     return (
@@ -22,7 +23,7 @@ const index = ({ articles }: { articles: ArticleType[] }) => {
                     return (
                         <div
                             key={index}
-                            className={`bg-primary size-full ${Style.flexColJustifyStart}
+                            className={`bg-zinc-900 size-full ${Style.flexColJustifyStart}
                             group  m-3 
                             transform transition duration-500 hover:scale-105 lg:h-[64vh] `}
                         >
@@ -42,26 +43,24 @@ const index = ({ articles }: { articles: ArticleType[] }) => {
                                     {attributes.title}
                                 </span>
                                 <p
-                                    className={`text-gray-400 mb-3 text-left text-base`}
+                                    className={`text-gray-400 mb-3 text-left text-sm`}
                                 >
                                     {attributes.content.slice(0, 100)}
                                 </p>
 
-                                <a
-                                    href={'/articles/' + attributes.slug}
-                                    className={`w-full ${Style.flexRowJustifyStart} cursor-pointer`}
-                                >
-                                    <>
-                                        <span
-                                            className={`text-white border-gradient-menu !border-b mr-1 text-left text-base`}
-                                        >
-                                            Read More
-                                        </span>
+                                <IconLink
+                                    text="Read More"
+                                    isTragetBlank={true}
+                                    style={`text-white text-left flex-row-start-center border-b-[1px] border-indigo-600`}
+                                    styleText="text-base font-normal"
+                                    href={`/articles/${attributes.slug}`}
+                                    iconPosition="right"
+                                    icon={
                                         <ChevronRightIcon
                                             className={`h-5 w-5  fill-white`}
                                         />
-                                    </>
-                                </a>
+                                    }
+                                />
                             </div>
                         </div>
                     );
@@ -77,7 +76,7 @@ const index = ({ articles }: { articles: ArticleType[] }) => {
                                 key={index}
                                 className={`size-full ${
                                     Style.flexRowJustifyStart
-                                } bg-primary group transform transition duration-500
+                                } bg-zinc-900 group transform transition duration-500
                                 hover:scale-105 ${index < 2 ? 'mb-2' : ''} `}
                             >
                                 <img
@@ -98,21 +97,19 @@ const index = ({ articles }: { articles: ArticleType[] }) => {
                                     >
                                         {attributes.content.slice(0, 40)}
                                     </p>
-                                    <a
-                                        href={'/articles/' + attributes.slug}
-                                        className={`w-full ${Style.flexRowJustifyStart} cursor-pointer`}
-                                    >
-                                        <>
-                                            <span
-                                                className={`text-white border-gradient-menu !border-b mr-1 text-left text-base`}
-                                            >
-                                                Read More
-                                            </span>
+                                    <IconLink
+                                        text="Read More"
+                                        isTragetBlank={true}
+                                        style={`text-white text-left flex-row-start-center border-b-[1px] border-indigo-600`}
+                                        styleText="text-base font-normal"
+                                        href={`/articles/${attributes.slug}`}
+                                        iconPosition="right"
+                                        icon={
                                             <ChevronRightIcon
-                                                className={`h-5 w-5 text-white`}
+                                                className={`h-5 w-5  fill-white`}
                                             />
-                                        </>
-                                    </a>
+                                        }
+                                    />
                                 </div>
                             </div>
                         );

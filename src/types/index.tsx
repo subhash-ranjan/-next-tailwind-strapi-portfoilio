@@ -1,11 +1,15 @@
 export type ButtonType = {
     text: string;
-    style: string;
+    style?: string;
     styleText?: string;
+    href?: string;
+    iconPosition?: string;
     showArrow?: boolean;
     isCapital?: boolean;
     isIcon?: boolean;
+    isTragetBlank?: boolean;
     isGithub?: boolean;
+    isDark?: boolean;
     isText?: boolean;
     icon?: React.ReactNode;
     onClickHandler?: React.MouseEventHandler;
@@ -29,10 +33,11 @@ export type ActionType = {
 
 export type PageHeaderType = {
     header: string;
-    subHeader: string;
+    subHeader?: string;
     infoText?: string;
     styleheader?: string;
     styleSubheader?: string;
+    styleInfo?: string;
 };
 
 export type ArticleType = {
@@ -65,4 +70,8 @@ export type ServiceType = {
         name: string;
         skills: JSON;
     };
+};
+
+export type OnlyBoolsAndHorses = {
+    [key: string]: Number;
 };

@@ -45,7 +45,7 @@ const Index = () => {
         <div className="bg-secondary flex-col-center-center h-28 w-full ">
             <div
                 ref={myRef}
-                className="bottom-5 right-5 hidden h-10 w-10 cursor-pointer rounded-full bg-red-500 p-3 opacity-70 lg:bottom-7 lg:right-7"
+                className="bottom-5 right-5 hidden h-10 w-10 cursor-pointer rounded-full bg-indigo-600 p-3 opacity-70 lg:bottom-7 lg:right-7"
                 onClick={() => {
                     scrollTop();
                 }}
